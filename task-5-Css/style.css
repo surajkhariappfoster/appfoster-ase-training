@@ -162,9 +162,9 @@ body{
     margin-bottom: 0;
 }
 
-title2
+.title2
 {
-    color:#003147;
+    color:#2008a8;
 }
 p
 {
@@ -238,3 +238,6 @@ p
     background: #6745d7;
 }
 
+.fa-user, .fa-suitcase, .fa-sitemap, .fa-rocket {
+    color: #b15adf; 
+}
