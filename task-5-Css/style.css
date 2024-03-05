@@ -111,7 +111,7 @@ body{
 }
 .contactInfo.education h5
 {
-    color:#03a9f4;
+    color:#d7ebf4;
     font-weight: 500;
 }
 .contactInfo.education h4
@@ -187,8 +187,11 @@ p
 .about .box .year_company h5
 {
     text-transform: uppercase;
-    color: #848c90;
+    color: #191a17;
     font-weight: 600;
+    float:right;
+    
+
     
 }
 
@@ -232,5 +235,6 @@ p
     top:0;
     left:0;
     height:100%;
-    background: #03a9f4;
+    background: #6745d7;
 }
+
