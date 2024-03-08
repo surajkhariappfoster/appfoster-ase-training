@@ -242,3 +242,23 @@ p
 .fa-user, .fa-suitcase, .fa-sitemap, .fa-rocket {
     color: #b15adf; 
 }
+
+a
+{
+    text-decoration: none;
+    color:white;
+}
+
+.html 
+{
+    width:80%;
+}
+.java
+{
+    width:70%;
+}
+
+.python
+{
+    width:90%;
+}
