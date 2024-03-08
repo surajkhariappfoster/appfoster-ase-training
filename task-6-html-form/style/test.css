@@ -41,6 +41,12 @@ button{
     width: 10%;
     
   }
+
+  .button-container input {
+    margin: 20px;
+    width: 10%;
+    
+  }
   h2,h3
   {
     
