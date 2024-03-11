@@ -1,0 +1,99 @@
+body {
+    padding-top: 60px; 
+}
+
+.myclass{
+      display: inline-block;
+      width: 40px; /* Set the width of the circular background */
+      height: 40px; /* Set the height of the circular background */
+      border-radius: 50%; /* Make the background circular */
+      background-color: black; /* Set the background color */
+      text-align: center; /* Center the icon */
+      line-height: 33px; /* Vertically center the icon */
+    }
+
+    .myclass svg {
+      width: 25px; /* Set the width of the icon */
+      height: 25px; /* Set the height of the icon */
+      fill: white; /* Set the color of the icon */
+    }
+
+hr{
+   border-color: white; 
+   border-width: 1.5px;
+   margin-left: -15px; 
+   margin-right: -15px;
+}
+
+
+.bold-text {
+    font-weight: bold;
+  }
+
+.portfolio {
+    font-weight: bold;
+    padding-left: 15px;
+
+}
+
+body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: normal;
+}
+
+.input-width {
+    width: 35%;
+}
+
+.main-container {
+
+   width: 100%
+} 
+
+.side-bar
+{
+    height: 500px;
+    width: 30px;
+}
+
+.app-border{
+    border: 2px solid rgb(0, 0, 0);
+}
+
+.img-size {
+    width: 30px; 
+    height: 30px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+}
+
+.nav-width {
+    width: 100%;
+}
+.slash {
+    display: inline;
+    padding-left: 13px;;
+    
+}
+
+.oneslash {
+    border: 1.5px solid black;
+    width: 15px;
+    margin-left: 10px;
+    border-radius: 20px;
+}
+
+.twoslash {
+    border: 1.5px solid black;
+    border-radius: 20px;
+    width: 30px;
+    margin: 3px;
+}
+.small-circle {
+    font-size: 0.6rem; 
+      vertical-align: 0.2em;
+      padding-left: 6px;;
+   
+
+}
+
