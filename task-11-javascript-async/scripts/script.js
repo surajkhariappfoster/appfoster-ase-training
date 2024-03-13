@@ -36,7 +36,7 @@ function displayUsers(users) {
         return;
     }
 
-    
+
 
     users.forEach(user => {
         console.log('Displaying user:', user); // Log individual user
