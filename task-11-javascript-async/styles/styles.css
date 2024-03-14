@@ -21,3 +21,8 @@ body {
     justify-content: space-between;
     color: black;
 }
+
+.pagebutton
+{
+    text-align: center;
+}

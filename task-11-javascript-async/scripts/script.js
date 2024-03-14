@@ -1,103 +1,132 @@
+let currentPage = 1; // Initial page
+const usersPerPage = 4; // Number of users per page
 
-async function getUsers() {
-    try {
-        const response = await fetch('https://gorest.co.in/public/v2/users');
-        console.log('Response status:', response.status);
-        if (!response.ok) {
-            throw new Error('Failed to fetch users: ' + response.status);
-        }
-        const data = await response.json();
-        console.log('Response data:', data);
-        return data || [];
-    } catch (error) {
-        console.error('Error fetching users:', error);
-        return [];
-    }
-}
-
-function displayUser(user) {
-    const userInfo = `
-        <p><strong>Email:</strong> ${user.email}</p>
-        <p><strong>Gender:</strong> ${user.gender}</p>
-        <p><strong>ID:</strong> ${user.id}</p>
-        <p><strong>Status:</strong> ${user.status}</p>
-    `;
-    return userInfo;
+async function getUsers(page) {
+    const response = await fetch(`https://gorest.co.in/public/v2/users?page=${page}`);
+    const data = await response.json();
+    console.log("Response from API:", data);
+    return data;
 }
 
 function displayUsers(users) {
-    console.log('Users:', users); // Log users array
     const userListContainer = document.getElementById('userList');
     userListContainer.innerHTML = '';
 
-    if (users.length === 0) {
-        console.log('No users found.');
-        userListContainer.textContent = 'No users found.';
-        return;
+    // Check if users array is not empty and not undefined
+    if (users && users.length > 0) {
+        // Calculate the starting index and ending index for the current page
+        const startIndex = (currentPage - 1) * usersPerPage;
+        const endIndex = startIndex + usersPerPage;
+
+        // Extract users for the current page
+        const usersForCurrentPage = users.slice(startIndex, endIndex);
+
+        // Loop through and display the users for the current page
+        usersForCurrentPage.forEach(user => {
+            const userDiv = document.createElement('div');
+            userDiv.classList.add('displayuser');
+            
+            const nameParagraph = document.createElement('p');
+            nameParagraph.textContent = user.name;
+            userDiv.appendChild(nameParagraph);
+            
+            // Create an SVG eye icon element
+// Create an SVG eye icon element
+const eyeIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+eyeIcon.setAttribute("class", "eye-icon");
+eyeIcon.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+eyeIcon.setAttribute("width", "20");
+eyeIcon.setAttribute("height", "20");
+eyeIcon.setAttribute("viewBox", "0 0 16 16");
+
+
+// Create the first path element for the eye icon
+const path1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+path1.setAttribute("d", "M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0");
+path1.setAttribute("fill", "blue"); // Set fill color to blue
+
+// Create the second path element for the eye icon
+const path2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+path2.setAttribute("d", "M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7");
+path2.setAttribute("fill", "blue"); // Set fill color to blue
+
+// Append the path elements to the eye icon
+eyeIcon.appendChild(path1);
+eyeIcon.appendChild(path2);
+
+// Attach a click event to the eye icon to show user details
+eyeIcon.addEventListener("click", function() {
+    showDetails(user.id);
+});
+
+// Append the eye icon to the userDiv
+userDiv.appendChild(eyeIcon);
+
+
+            userListContainer.appendChild(userDiv);
+        });
+    } else {
+        userListContainer.innerHTML = '<p>No users found.</p>';
     }
-
-
-
-    users.forEach(user => {
-        console.log('Displaying user:', user); // Log individual user
-        const userDiv = document.createElement('div');
-        userDiv.innerHTML = `
-            <div class="displayuser" >
-                    <div class="username">
-                    <p>${user.name}</p>
-                    </div>
-                    <div class="eye">
-                        <svg onclick="showDetails('${user.id}')" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-                         <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z"/>
-                         <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/>
-                         </svg>
-                    </div>
-                </div>
-                <hr>
-        `;
-        userListContainer.appendChild(userDiv);
-    });
-    updatePagination();
 }
+
 
 
 async function showDetails(userId) {
-    try {
-        const response = await fetch(`https://gorest.co.in/public/v2/users/${userId}`);
-        if (!response.ok) {
-            throw new Error('Failed to fetch user details: ' + response.status);
-        }
-        const user = await response.json();
-        console.log('User details response:', user);
-        if (!user || !user.name) {
-            throw new Error('Invalid user data received');
-        }
-        const userDetailsModalLabel = document.getElementById('userDetailsModalLabel');
-        const userDetailsBody = document.getElementById('userDetailsBody');
-        userDetailsModalLabel.textContent = 'User Details: ' + user.name;
-        userDetailsBody.innerHTML = `
-            <p><strong>ID:</strong> ${user.id}</p>
-            <p><strong>Name:</strong> ${user.name}</p>
-            <p><strong>Email:</strong> ${user.email}</p>
-            <p><strong>Gender:</strong> ${user.gender}</p>
-            <p><strong>Status:</strong> ${user.status}</p>
-        `;
-        // Show the modal
-        const userDetailsModal = new bootstrap.Modal(document.getElementById('userDetailsModal'));
-        userDetailsModal.show();
-    } catch (error) {
-        console.error('Error fetching user details:', error);
-    }
+    const response = await fetch(`https://gorest.co.in/public/v2/users/${userId}`);
+    const user = await response.json();
+    const userDetailsModalLabel = document.getElementById('userDetailsModalLabel');
+    const userDetailsBody = document.getElementById('userDetailsBody');
+    userDetailsModalLabel.textContent = 'User Details: ' + user.name;
+    userDetailsBody.innerHTML = `
+        <p><strong>ID:</strong> ${user.id}</p>
+        <p><strong>Name:</strong> ${user.name}</p>
+        <p><strong>Email:</strong> ${user.email}</p>
+        <p><strong>Gender:</strong> ${user.gender}</p>
+        <p><strong>Status:</strong> ${user.status}</p>
+    `;
+    const userDetailsModal = new bootstrap.Modal(document.getElementById('userDetailsModal'));
+    userDetailsModal.show();
 }
 
-
-
-// Fetch and display user data when the page loads
 window.onload = async function () {
-    try {
-        const users = await getUsers();
-        displayUsers(users);
-    } catch (error) {
-        console.error('Error fetching user data:', error);
-    }
+    const usersData = await getUsers(currentPage);
+    console.log("Users data:", usersData);
+    displayUsers(usersData); // Pass usersData.data instead of usersData
 };
+
+
+async function goToPage(page) {
+    currentPage = page;
+    const usersData = await getUsers(currentPage);
+    displayUsers(usersData.data);
+}
+
+document.getElementById('prevPage').addEventListener('click', async function() {
+    if (currentPage > 1) {
+        const prevPage = currentPage - 1;
+        const usersData = await getUsers(prevPage);
+        if (usersData && usersData.length > 0) {
+            currentPage = prevPage;
+            displayUsers(usersData);
+        } else {
+            console.log("No users found for the previous page.");
+            // Optionally, you can display a message or take other actions here.
+        }
+    } else {
+        console.log("Already on the first page.");
+        // Optionally, you can display a message or take other actions here.
+    }
+});
+document.getElementById('nextPage').addEventListener('click', async function() {
+    const nextPage = currentPage + 1;
+    const usersData = await getUsers(nextPage);
+    if (usersData && usersData.length > 0) {
+        currentPage = nextPage;
+        displayUsers(usersData);
+    } else {
+        console.log("No users found for the next page.");
+        // Optionally, you can display a message or take other actions here.
+    }
+});
+
