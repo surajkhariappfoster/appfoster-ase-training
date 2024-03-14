@@ -25,42 +25,42 @@ function displayUsers(users) {
         usersForCurrentPage.forEach(user => {
             const userDiv = document.createElement('div');
             userDiv.classList.add('displayuser');
-            
+
             const nameParagraph = document.createElement('p');
             nameParagraph.textContent = user.name;
             userDiv.appendChild(nameParagraph);
-            
+
             // Create an SVG eye icon element
-// Create an SVG eye icon element
-const eyeIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-eyeIcon.setAttribute("class", "eye-icon");
-eyeIcon.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-eyeIcon.setAttribute("width", "20");
-eyeIcon.setAttribute("height", "20");
-eyeIcon.setAttribute("viewBox", "0 0 16 16");
+            // Create an SVG eye icon element
+            const eyeIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            eyeIcon.setAttribute("class", "eye-icon");
+            eyeIcon.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+            eyeIcon.setAttribute("width", "20");
+            eyeIcon.setAttribute("height", "20");
+            eyeIcon.setAttribute("viewBox", "0 0 16 16");
 
 
-// Create the first path element for the eye icon
-const path1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
-path1.setAttribute("d", "M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0");
-path1.setAttribute("fill", "blue"); // Set fill color to blue
+            // Create the first path element for the eye icon
+            const path1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            path1.setAttribute("d", "M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0");
+            path1.setAttribute("fill", "blue"); // Set fill color to blue
 
-// Create the second path element for the eye icon
-const path2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
-path2.setAttribute("d", "M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7");
-path2.setAttribute("fill", "blue"); // Set fill color to blue
+            // Create the second path element for the eye icon
+            const path2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            path2.setAttribute("d", "M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7");
+            path2.setAttribute("fill", "blue"); // Set fill color to blue
 
-// Append the path elements to the eye icon
-eyeIcon.appendChild(path1);
-eyeIcon.appendChild(path2);
+            // Append the path elements to the eye icon
+            eyeIcon.appendChild(path1);
+            eyeIcon.appendChild(path2);
 
-// Attach a click event to the eye icon to show user details
-eyeIcon.addEventListener("click", function() {
-    showDetails(user.id);
-});
+            // Attach a click event to the eye icon to show user details
+            eyeIcon.addEventListener("click", function () {
+                showDetails(user.id);
+            });
 
-// Append the eye icon to the userDiv
-userDiv.appendChild(eyeIcon);
+            // Append the eye icon to the userDiv
+            userDiv.appendChild(eyeIcon);
 
 
             userListContainer.appendChild(userDiv);
@@ -102,7 +102,7 @@ async function goToPage(page) {
     displayUsers(usersData.data);
 }
 
-document.getElementById('prevPage').addEventListener('click', async function() {
+document.getElementById('prevPage').addEventListener('click', async function () {
     if (currentPage > 1) {
         const prevPage = currentPage - 1;
         const usersData = await getUsers(prevPage);
@@ -118,7 +118,7 @@ document.getElementById('prevPage').addEventListener('click', async function() {
         // Optionally, you can display a message or take other actions here.
     }
 });
-document.getElementById('nextPage').addEventListener('click', async function() {
+document.getElementById('nextPage').addEventListener('click', async function () {
     const nextPage = currentPage + 1;
     const usersData = await getUsers(nextPage);
     if (usersData && usersData.length > 0) {
