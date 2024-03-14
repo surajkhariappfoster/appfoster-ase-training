@@ -1,28 +1,86 @@
-body {
-    margin: 10px;
-}
-
-.displayuser {
-    padding-top: 10px;
-    margin-left: 50px;
-    margin-right: 50px;
-    display: flex;
+table {
+    border-collapse: collapse;
+    width: 100%;
     align-items: center;
-    justify-content: space-between;
-    color: blue;
 }
 
-.user-list {
-    padding-top: 10px;
-    margin-left: 50px;
-    margin-right: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: black;
-}
-
-.pagebutton
-{
+th,
+td {
+    border: 1px solid #dddddd;
     text-align: center;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.pagination {
+    text-align: center;
+    /* Center align the buttons */
+    margin-top: 50px;
+    /* Optional: Adjust margin from the top */
+    margin-left: 450px;
+    ;
+    position: fixed;
+    /* Set position to fixed */
+    top: 250px;
+    /* Position from the top */
+    left: 20px;
+    /* Position from the left */
+    padding: 10px;
+    /* Padding */
+
+}
+
+.pagination button {
+    background-color: #5f0eb0;
+    color: white;
+    padding: 10px 20px;
+    border: 1px solid rgb(245, 229, 229);
+    cursor: pointer;
+    border-radius: 15%;
+    align-items: center;
+}
+
+.pagination button:hover {
+    background-color: #33d7e3;
+}
+
+#data-table {
+    margin: 0 auto;
+    /* Center align the table */
+    border-collapse: collapse;
+    /* Collapse borders */
+}
+
+#data-table th,
+#data-table td {
+    padding: 8px;
+    /* Add padding for better readability */
+    border: 1px solid #ddd;
+    /* Add border for table cells */
+    text-align: center;
+    /* Align text to the left */
+    width: 150px;
+    /* Fixed width for table cells */
+}
+
+.table-wrapper {
+    margin: 30px auto;
+    /* This centers the table horizontally */
+    width: 60%;
+    /* Adjust the width as needed */
+    /* Optionally, you can add more styling */
+    /* For example, you can add padding or border */
+    /* padding: 20px; */
+    /* border: 1px solid #ccc; */
+}
+
+#prev {
+    background-color: rgb(103, 138, 35);
+}
+
+#next {
+    background-color: rgb(103, 138, 35);
 }
