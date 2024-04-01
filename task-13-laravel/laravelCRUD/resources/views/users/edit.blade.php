@@ -23,38 +23,33 @@
     <div class="row justify-content-center">
         <div class="col-sm-6">
             <div class="card mt-3 p-3">
-                <form method="POST" action="{{ route('users.update', ['id' => $users->id]) }}">
-                    @csrf
-                    @method('PUT')
+            <form method="POST" action="{{ isset($users) ? route('users.update', ['id' => $users->id]) : '#' }}">
+    @csrf
+    @method('PUT')
 
-                    <div class="form-group">
-                        <label>ID</label>
-                        <input type="number" name="id" class="form-control" value="{{ old('id', $users->id) }}"/>
-                        
-                    </div>
-                    <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" name="name" class="form-control" value="{{ old('name', $users->name) }}"/>
-                        
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="text" name="email" class="form-control" value="{{ old('email', $users->email) }}"/>
-                        
-                    </div>
-                    <div class="form-group">
-                        <label>Gender</label>
-                        <input type="text" name="gender" class="form-control" value="{{ old('gender', $users->gender) }}"/>
-                        
-                    </div>
-                    <div class="form-group">
-                        <label>Status</label>
-                        <input type="text" name="status" class="form-control" value="{{ old('status', $users->status) }}"/>
-                        
-                    </div>
-                    <br>
-                    <button type="submit" class="btn btn-dark">Submit</button>
-                </form>
+    <div class="form-group">
+        <label>ID</label>
+        <input type="number" name="id" class="form-control" value="{{ isset($users) ? $users->id : old('id') }}"/>
+    </div>
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" name="name" class="form-control" value="{{ isset($users) ? $users->name : old('name') }}"/>
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input type="text" name="email" class="form-control" value="{{ isset($users) ? $users->email : old('email') }}"/>
+    </div>
+    <div class="form-group">
+        <label>Gender</label>
+        <input type="text" name="gender" class="form-control" value="{{ isset($users) ? $users->gender : old('gender') }}"/>
+    </div>
+    <div class="form-group">
+        <label>Status</label>
+        <input type="text" name="status" class="form-control" value="{{ isset($users) ? $users->status : old('status') }}"/>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-dark">Submit</button>
+</form>
             </div>
         </div>
     </div>

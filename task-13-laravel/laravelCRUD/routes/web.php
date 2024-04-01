@@ -33,3 +33,8 @@ use App\Http\Controllers\UserController;
 
 
 
+// routes/web.php
+
+use App\Http\Controllers\ProjectController;
+
+Route::post('/update-project-name', [ProjectController::class, 'updateProjectName'])->name('update.project.name');
