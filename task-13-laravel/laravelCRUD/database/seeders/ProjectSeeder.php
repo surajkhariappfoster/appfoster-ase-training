@@ -16,16 +16,14 @@ class ProjectSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create();
-        for($i=1; $i<=50; $i++)
-        {
-        $projects = new Projects;
-        $projects->id = $faker->numberBetween(200,250);
-        $projects->user_id = $faker->numberBetween(200, 250);
-        $projects->name = "Project B";
-    
+        $projectId = 1;
 
-        $projects->save();
+        for ($i = 0; $i < 20; $i++) {
+            $projects = new Projects;
+            $projects->id =  mt_rand(26, 50);
+            $projects->user_id = $projectId++;
+            $projects->project_name = "Project A";
+            $projects->save();
         }
     }
 }

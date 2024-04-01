@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Projects extends Model
+class Users extends Model
 {
     use HasFactory;
-    protected $table='projects';
-    protected $fillable =
-    [
-        'id', 'user_id', 'name',];
-
+    
+    public function projects()
+    {
+        return $this->hasMany(Projects::class, 'user_id');
+    }
 }
+
+
