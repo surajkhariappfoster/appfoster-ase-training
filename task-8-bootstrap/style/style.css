@@ -1,0 +1,165 @@
+body {
+    padding-top: 60px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: normal;
+}
+
+.pillone {
+    background-color: #FFF4EA;
+    color: #FFBF83;
+}
+
+.pilltwo {
+    background-color: #F6F5FE;
+    color: #7F74F4;
+}
+
+.pillthree {
+    background-color: #F1FBFE;
+    color: #4591A5;
+}
+
+.pillfour {
+    background-color: #FFEDF3;
+    color: #EC81A6;
+}
+
+.pillfive {
+    background-color: #E9FCF1;
+    color: #80DCA7;
+}
+
+.pillsix {
+    background-color: #EEF2FF;
+    color: #5F80FA;
+}
+
+.p1 {
+    background-color: #FEE4CB;
+}
+
+.p2 {
+    background-color: #E9E7FD;
+}
+
+.p3 {
+    background-color: #DBF6FD;
+}
+
+.p4 {
+    background-color: #FFD3E2;
+}
+
+.p5 {
+    background-color: #C8F7DC;
+}
+
+.p6 {
+    background-color: #D5DEFF;
+}
+
+.myclass {
+    display: inline-block;
+    width: 40px;
+    /* Set the width of the circular background */
+    height: 40px;
+    /* Set the height of the circular background */
+    border-radius: 50%;
+    /* Make the background circular */
+    background-color: black;
+    /* Set the background color */
+    text-align: center;
+    /* Center the icon */
+    line-height: 33px;
+    /* Vertically center the icon */
+}
+
+.myclass svg {
+    width: 25px;
+    /* Set the width of the icon */
+    height: 25px;
+    /* Set the height of the icon */
+    fill: white;
+    /* Set the color of the icon */
+}
+
+.img-size {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+hr {
+    border-color: white;
+    border-width: 1.5px;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+
+.bold-text {
+    font-weight: bold;
+}
+
+.portfolio {
+    font-weight: bold;
+    padding-left: 15px;
+
+}
+
+
+
+.input-width {
+    width: 35%;
+}
+
+.main-container {
+
+    width: 100%
+}
+
+.side-bar {
+    height: 500px;
+    width: 30px;
+}
+
+.app-border {
+    border: 2px solid rgb(0, 0, 0);
+}
+
+
+.nav-width {
+    width: 100%;
+}
+
+.slash {
+    display: inline;
+    padding-left: 13px;
+    ;
+
+}
+
+.oneslash {
+    border: 1.5px solid black;
+    width: 15px;
+    margin-left: 10px;
+    border-radius: 20px;
+}
+
+.twoslash {
+    border: 1.5px solid black;
+    border-radius: 20px;
+    width: 30px;
+    margin: 3px;
+}
+
+.small-circle {
+    font-size: 0.6rem;
+    vertical-align: 0.2em;
+    padding-left: 6px;
+    ;
+
+
+}
