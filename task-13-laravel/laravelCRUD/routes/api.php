@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 
 
 
+Route::get('users/{id}', [UserController::class, 'shows'])->name('users.shows');
+
 Route::get('users', [UserController::class, 'index'])->name('users.index');
 
 

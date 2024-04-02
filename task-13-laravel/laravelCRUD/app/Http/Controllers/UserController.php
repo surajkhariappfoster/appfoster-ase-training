@@ -44,16 +44,16 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'id'=>'required',
-            'name'=>'required',
-            'email'=>'required',
-            'gender'=>'required',
-            'status'=>'required'
-        ]);
+        // $request->validate([
+        //     'id'=>'required',
+        //     'name'=>'required',
+        //     'email'=>'required',
+        //     'gender'=>'required',
+        //     'status'=>'required'
+        // ]);
         
-        $users = Users::where('id',$id)->first();
-
+        //$users = Users::where('id',$id)->first();
+        $users = Users::findOrFail($id);
         $users->id=$request->id;
         $users->name=$request->name;
         $users->email=$request->email;
@@ -106,4 +106,16 @@ class UserController extends Controller
         
         return view('projects.show', compact('user', 'projects'));
     }
+     
+    public function shows($id)
+    {
+        $users = Users::find($id);
+
+        if (!$users) {
+            return response()->json(['error' => 'User not found'], 404);
+        }
+
+        return response()->json($users);
+    }
+
 }
